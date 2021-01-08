@@ -10,7 +10,7 @@ class VideoToUploadRepository
     {}
 
     public function insertVideoIfNeeded(
-        string $twitterId,
+        string $facebookId,
         int $twitterAccountId,
         int $youtubeVideoId
     ): void
@@ -18,7 +18,7 @@ class VideoToUploadRepository
         $this->connection->start();
         $postQueryParams = [
             'account_id' => $twitterAccountId,
-            'facebook_id' => $twitterId
+            'facebook_id' => $facebookId
         ];
         $findPostIdQuery = ['
             SELECT id FROM facebook_post

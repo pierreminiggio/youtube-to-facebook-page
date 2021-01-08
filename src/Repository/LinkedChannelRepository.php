@@ -16,7 +16,6 @@ class LinkedChannelRepository
             SELECT
                 fpyc.youtube_id as y_id,
                 f.id as f_id,
-                f.facebook_id,
                 f.api_url,
                 f.api_token
             FROM facebook_page as f
