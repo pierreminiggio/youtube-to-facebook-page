@@ -16,11 +16,9 @@ class LinkedChannelRepository
             SELECT
                 fpyc.youtube_id as y_id,
                 f.id as f_id,
-                f.oauth_access_token,
-                f.oauth_access_token_secret,
-                f.consumer_key,
-                f.consumer_secret,
-                f.tweet_content
+                f.facebook_id,
+                f.api_url,
+                f.api_token
             FROM facebook_page as f
             RIGHT JOIN facebook_page_youtube_channel as fpyc
                 ON f.id = fpyc.facebook_id

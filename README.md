@@ -35,7 +35,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `facebook_page` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `api_url` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `api_token` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -60,11 +61,11 @@ CREATE TABLE `facebook_page_youtube_channel` (
 
 CREATE TABLE `facebook_post` (
   `id` int(11) NOT NULL,
+  `account_id` INT NOT NULL,
   `facebook_id` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-ALTER TABLE `facebook_post` ADD `account_id` INT NOT NULL AFTER `id`;
 
 -- --------------------------------------------------------
 
