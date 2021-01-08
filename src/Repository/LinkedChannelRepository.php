@@ -1,6 +1,6 @@
 <?php
 
-namespace PierreMiniggio\YoutubeToTwitter\Repository;
+namespace PierreMiniggio\YoutubeToFacebookPage\Repository;
 
 use PierreMiniggio\DatabaseConnection\DatabaseConnection;
 
@@ -14,16 +14,16 @@ class LinkedChannelRepository
         $this->connection->start();
         $channels = $this->connection->query('
             SELECT
-                tayc.youtube_id as y_id,
-                t.id as t_id,
-                t.oauth_access_token,
-                t.oauth_access_token_secret,
-                t.consumer_key,
-                t.consumer_secret,
-                t.tweet_content
-            FROM twitter_account as t
-            RIGHT JOIN twitter_account_youtube_channel as tayc
-                ON t.id = tayc.twitter_id
+                fpyc.youtube_id as y_id,
+                f.id as f_id,
+                f.oauth_access_token,
+                f.oauth_access_token_secret,
+                f.consumer_key,
+                f.consumer_secret,
+                f.tweet_content
+            FROM facebook_page as f
+            RIGHT JOIN facebook_page_youtube_channel as fpyc
+                ON f.id = fpyc.facebook_id
         ', []);
         $this->connection->stop();
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace PierreMiniggio\YoutubeToTwitter;
+namespace PierreMiniggio\YoutubeToFacebookPage;
 
 use PierreMiniggio\TwitterHelpers\TwitterPoster;
-use PierreMiniggio\YoutubeToTwitter\Connection\DatabaseConnectionFactory;
-use PierreMiniggio\YoutubeToTwitter\Repository\LinkedChannelRepository;
-use PierreMiniggio\YoutubeToTwitter\Repository\NonUploadedVideoRepository;
-use PierreMiniggio\YoutubeToTwitter\Repository\VideoToUploadRepository;
+use PierreMiniggio\YoutubeToFacebookPage\Connection\DatabaseConnectionFactory;
+use PierreMiniggio\YoutubeToFacebookPage\Repository\LinkedChannelRepository;
+use PierreMiniggio\YoutubeToFacebookPage\Repository\NonUploadedVideoRepository;
+use PierreMiniggio\YoutubeToFacebookPage\Repository\VideoToUploadRepository;
 
 class App
 {

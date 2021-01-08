@@ -1,5 +1,5 @@
 {
-    "name": "pierreminiggio/youtube-to-twitter",
+    "name": "pierreminiggio/youtube-to-facebook-page",
     "authors": [
         {
             "name": "Pierre MINIGGIO",
@@ -8,14 +8,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "PierreMiniggio\\YoutubeToTwitter\\": "src/"
+            "PierreMiniggio\\YoutubeToFacebookPage\\": "src/"
         }
     },
     "config": {
         "sort-packages": true
     },
     "require": {
-        "pierreminiggio/database-connection": "^1.2",
-        "pierreminiggio/twitter-helpers": "^0.1.0"
+        "pierreminiggio/database-connection": "^1.2"
     }
 }

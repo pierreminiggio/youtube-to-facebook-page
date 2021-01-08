@@ -1,6 +1,6 @@
 <?php
 
-namespace PierreMiniggio\YoutubeToTwitter\Repository;
+namespace PierreMiniggio\YoutubeToFacebookPage\Repository;
 
 use PierreMiniggio\DatabaseConnection\DatabaseConnection;
 
@@ -18,20 +18,20 @@ class VideoToUploadRepository
         $this->connection->start();
         $postQueryParams = [
             'account_id' => $twitterAccountId,
-            'twitter_id' => $twitterId
+            'facebook_id' => $twitterId
         ];
         $findPostIdQuery = ['
-            SELECT id FROM twitter_post
+            SELECT id FROM facebook_post
             WHERE account_id = :account_id
-            AND twitter_id = :twitter_id
+            AND facebook_id = :facebook_id
             ;
         ', $postQueryParams];
         $queriedIds = $this->connection->query(...$findPostIdQuery);
         
         if (! $queriedIds) {
             $this->connection->exec('
-                INSERT INTO twitter_post (account_id, twitter_id)
-                VALUES (:account_id, :twitter_id)
+                INSERT INTO facebook_post (account_id, facebook_id)
+                VALUES (:account_id, :facebook_id)
                 ;
             ', $postQueryParams);
             $queriedIds = $this->connection->query(...$findPostIdQuery);
@@ -40,21 +40,21 @@ class VideoToUploadRepository
         $postId = (int) $queriedIds[0]['id'];
         
         $pivotQueryParams = [
-            'twitter_id' => $postId,
+            'facebook_id' => $postId,
             'youtube_id' => $youtubeVideoId
         ];
 
         $queriedPivotIds = $this->connection->query('
-            SELECT id FROM twitter_post_youtube_video
-            WHERE twitter_id = :twitter_id
+            SELECT id FROM facebook_post_youtube_video
+            WHERE facebook_id = :facebook_id
             AND youtube_id = :youtube_id
             ;
         ', $pivotQueryParams);
         
         if (! $queriedPivotIds) {
             $this->connection->exec('
-                INSERT INTO twitter_post_youtube_video (twitter_id, youtube_id)
-                VALUES (:twitter_id, :youtube_id)
+                INSERT INTO facebook_post_youtube_video (facebook_id, youtube_id)
+                VALUES (:facebook_id, :youtube_id)
                 ;
             ', $pivotQueryParams);
         }

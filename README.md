@@ -1,4 +1,4 @@
-# youtube-to-twitter
+# youtube-to-facebook-page
 
 Migration :
 
@@ -30,102 +30,81 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `twitter_account`
+-- Structure de la table `facebook_page`
 --
 
-CREATE TABLE `twitter_account` (
+CREATE TABLE `facebook_page` (
   `id` int(11) NOT NULL,
-  `oauth_access_token` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `oauth_access_token_secret` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `consumer_key` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `consumer_secret` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-ALTER TABLE `twitter_account` ADD `tweet_content` TEXT NOT NULL AFTER `consumer_secret`;
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `twitter_account_youtube_channel`
+-- Structure de la table `facebook_page_youtube_channel`
 --
 
-CREATE TABLE `twitter_account_youtube_channel` (
+CREATE TABLE `facebook_page_youtube_channel` (
   `id` int(11) NOT NULL,
-  `twitter_id` int(11) NOT NULL,
+  `facebook_id` int(11) NOT NULL,
   `youtube_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `twitter_post`
+-- Structure de la table `facebook_post`
 --
 
-CREATE TABLE `twitter_post` (
+CREATE TABLE `facebook_post` (
   `id` int(11) NOT NULL,
-  `twitter_id` varchar(255) NOT NULL,
+  `facebook_id` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-ALTER TABLE `twitter_post` ADD `account_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `facebook_post` ADD `account_id` INT NOT NULL AFTER `id`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `twitter_post_youtube_video`
+-- Structure de la table `facebook_post_youtube_video`
 --
 
-CREATE TABLE `twitter_post_youtube_video` (
+CREATE TABLE `facebook_post_youtube_video` (
   `id` int(11) NOT NULL,
-  `twitter_id` int(11) NOT NULL,
+  `facebook_id` int(11) NOT NULL,
   `youtube_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `youtube_video_unpostable_on_twitter`
---
-
-CREATE TABLE `youtube_video_unpostable_on_twitter` (
-  `id` int(11) NOT NULL,
-  `youtube_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `twitter_account`
+-- Index pour la table `facebook_page`
 --
-ALTER TABLE `twitter_account`
+ALTER TABLE `facebook_page`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `twitter_account_youtube_channel`
+-- Index pour la table `facebook_page_youtube_channel`
 --
-ALTER TABLE `twitter_account_youtube_channel`
+ALTER TABLE `facebook_page_youtube_channel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `twitter_post`
+-- Index pour la table `facebook_post`
 --
-ALTER TABLE `twitter_post`
+ALTER TABLE `facebook_post`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `twitter_post_youtube_video`
+-- Index pour la table `facebook_post_youtube_video`
 --
-ALTER TABLE `twitter_post_youtube_video`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `youtube_video_unpostable_on_twitter`
---
-ALTER TABLE `youtube_video_unpostable_on_twitter`
+ALTER TABLE `facebook_post_youtube_video`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -133,30 +112,27 @@ ALTER TABLE `youtube_video_unpostable_on_twitter`
 --
 
 --
--- AUTO_INCREMENT pour la table `twitter_account`
+-- AUTO_INCREMENT pour la table `facebook_page`
 --
-ALTER TABLE `twitter_account`
+ALTER TABLE `facebook_page`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `twitter_account_youtube_channel`
+-- AUTO_INCREMENT pour la table `facebook_page_youtube_channel`
 --
-ALTER TABLE `twitter_account_youtube_channel`
+ALTER TABLE `facebook_page_youtube_channel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `twitter_post`
+-- AUTO_INCREMENT pour la table `facebook_post`
 --
-ALTER TABLE `twitter_post`
+ALTER TABLE `facebook_post`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `twitter_post_youtube_video`
+-- AUTO_INCREMENT pour la table `facebook_post_youtube_video`
 --
-ALTER TABLE `twitter_post_youtube_video`
+ALTER TABLE `facebook_post_youtube_video`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `youtube_video_unpostable_on_twitter`
---
-ALTER TABLE `youtube_video_unpostable_on_twitter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

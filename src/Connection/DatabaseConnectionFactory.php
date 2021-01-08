@@ -1,6 +1,6 @@
 <?php
 
-namespace PierreMiniggio\YoutubeToTwitter\Connection;
+namespace PierreMiniggio\YoutubeToFacebookPage\Connection;
 
 use PierreMiniggio\DatabaseConnection\DatabaseConnection;
 
