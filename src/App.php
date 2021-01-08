@@ -60,7 +60,7 @@ class App
 
                 $jsonResponse = json_decode($res, true);
 
-                if (isset($jsonResponse['post_id'])) {
+                if (! empty($jsonResponse['post_id'])) {
                     $videoToUploadRepository->insertVideoIfNeeded(
                         $jsonResponse['post_id'],
                         $linkedChannel['f_id'],
