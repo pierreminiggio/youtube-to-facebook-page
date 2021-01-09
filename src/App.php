@@ -39,7 +39,7 @@ class App
         foreach ($linkedChannels as $linkedChannel) {
             echo PHP_EOL . PHP_EOL . 'Checking page ' . $linkedChannel['f_id'] . '...';
 
-            $postsToPost = $nonUploadedVideoRepository->findByTwitterAndYoutubeChannelIds($linkedChannel['f_id'], $linkedChannel['y_id']);
+            $postsToPost = $nonUploadedVideoRepository->findByFacebookAndYoutubeChannelIds($linkedChannel['f_id'], $linkedChannel['y_id']);
             echo PHP_EOL . count($postsToPost) . ' post(s) to post :' . PHP_EOL;
             
             foreach ($postsToPost as $postToPost) {
