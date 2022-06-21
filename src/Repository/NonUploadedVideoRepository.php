@@ -38,6 +38,7 @@ class NonUploadedVideoRepository
             
             WHERE y.channel_id = :channel_id
             ' . ($postedFacebookPostIds ? 'AND fpyv.id IS NULL' : '') . '
+            LIMIT 1
             ;
         ', [
             'channel_id' => $youtubeChannelId
